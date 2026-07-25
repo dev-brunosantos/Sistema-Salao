@@ -1,0 +1,17 @@
+### Criação do cliente
+POST http://localhost:9000/cliente
+Content-Type: application/json 
+
+{
+    "nome": "Fabi",
+    "telefone": ""
+}
+
+### Listar clientes
+GET http://localhost:9000/cliente
+
+### Filtra cliente por ID
+GET http://localhost:9000/cliente/2
+
+### Filtra cliente por nome
+GET http://localhost:9000/cliente/nome/monica santos
