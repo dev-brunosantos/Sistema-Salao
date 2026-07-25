@@ -1,0 +1,19 @@
+### Criação do usuario
+POST http://localhost:9000/usuario
+Content-Type: application/json 
+
+{
+    "nome": "Monica Santos",
+    "email": "monica@email.com",
+    "senha": "Moni2520",
+    "cargo": "ADMIN"
+}
+
+### Listar usuarios
+GET http://localhost:9000/usuario
+
+### Filtra usuario por ID
+GET http://localhost:9000/usuario/1
+
+### Filtra usuario por nome
+GET http://localhost:9000/usuario/nome/monica santos

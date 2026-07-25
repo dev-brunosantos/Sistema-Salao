@@ -38,6 +38,7 @@ export type ClienteMinAggregateOutputType = {
   id: number | null
   nome: string | null
   telefone: string | null
+  cargo: $Enums.Cargos | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -46,6 +47,7 @@ export type ClienteMaxAggregateOutputType = {
   id: number | null
   nome: string | null
   telefone: string | null
+  cargo: $Enums.Cargos | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -54,6 +56,7 @@ export type ClienteCountAggregateOutputType = {
   id: number
   nome: number
   telefone: number
+  cargo: number
   dataCadastro: number
   dataAtualizacao: number
   _all: number
@@ -72,6 +75,7 @@ export type ClienteMinAggregateInputType = {
   id?: true
   nome?: true
   telefone?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -80,6 +84,7 @@ export type ClienteMaxAggregateInputType = {
   id?: true
   nome?: true
   telefone?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -88,6 +93,7 @@ export type ClienteCountAggregateInputType = {
   id?: true
   nome?: true
   telefone?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
   _all?: true
@@ -183,6 +189,7 @@ export type ClienteGroupByOutputType = {
   id: number
   nome: string
   telefone: string | null
+  cargo: $Enums.Cargos
   dataCadastro: Date
   dataAtualizacao: Date
   _count: ClienteCountAggregateOutputType | null
@@ -214,6 +221,7 @@ export type ClienteWhereInput = {
   id?: Prisma.IntFilter<"Cliente"> | number
   nome?: Prisma.StringFilter<"Cliente"> | string
   telefone?: Prisma.StringNullableFilter<"Cliente"> | string | null
+  cargo?: Prisma.EnumCargosFilter<"Cliente"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFilter<"Cliente"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Cliente"> | Date | string
   agendamentos?: Prisma.AgendamentoListRelationFilter
@@ -223,6 +231,7 @@ export type ClienteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   telefone?: Prisma.SortOrderInput | Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
   agendamentos?: Prisma.AgendamentoOrderByRelationAggregateInput
@@ -235,6 +244,7 @@ export type ClienteWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ClienteWhereInput | Prisma.ClienteWhereInput[]
   nome?: Prisma.StringFilter<"Cliente"> | string
   telefone?: Prisma.StringNullableFilter<"Cliente"> | string | null
+  cargo?: Prisma.EnumCargosFilter<"Cliente"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFilter<"Cliente"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Cliente"> | Date | string
   agendamentos?: Prisma.AgendamentoListRelationFilter
@@ -244,6 +254,7 @@ export type ClienteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   telefone?: Prisma.SortOrderInput | Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
   _count?: Prisma.ClienteCountOrderByAggregateInput
@@ -260,6 +271,7 @@ export type ClienteScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Cliente"> | number
   nome?: Prisma.StringWithAggregatesFilter<"Cliente"> | string
   telefone?: Prisma.StringNullableWithAggregatesFilter<"Cliente"> | string | null
+  cargo?: Prisma.EnumCargosWithAggregatesFilter<"Cliente"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeWithAggregatesFilter<"Cliente"> | Date | string
   dataAtualizacao?: Prisma.DateTimeWithAggregatesFilter<"Cliente"> | Date | string
 }
@@ -267,6 +279,7 @@ export type ClienteScalarWhereWithAggregatesInput = {
 export type ClienteCreateInput = {
   nome: string
   telefone?: string | null
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   agendamentos?: Prisma.AgendamentoCreateNestedManyWithoutClienteInput
@@ -276,6 +289,7 @@ export type ClienteUncheckedCreateInput = {
   id?: number
   nome: string
   telefone?: string | null
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   agendamentos?: Prisma.AgendamentoUncheckedCreateNestedManyWithoutClienteInput
@@ -284,6 +298,7 @@ export type ClienteUncheckedCreateInput = {
 export type ClienteUpdateInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agendamentos?: Prisma.AgendamentoUpdateManyWithoutClienteNestedInput
@@ -293,6 +308,7 @@ export type ClienteUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agendamentos?: Prisma.AgendamentoUncheckedUpdateManyWithoutClienteNestedInput
@@ -302,6 +318,7 @@ export type ClienteCreateManyInput = {
   id?: number
   nome: string
   telefone?: string | null
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -309,6 +326,7 @@ export type ClienteCreateManyInput = {
 export type ClienteUpdateManyMutationInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -317,6 +335,7 @@ export type ClienteUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -325,6 +344,7 @@ export type ClienteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -337,6 +357,7 @@ export type ClienteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -345,6 +366,7 @@ export type ClienteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nome?: Prisma.SortOrder
   telefone?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -379,6 +401,7 @@ export type ClienteUpdateOneRequiredWithoutAgendamentosNestedInput = {
 export type ClienteCreateWithoutAgendamentosInput = {
   nome: string
   telefone?: string | null
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -387,6 +410,7 @@ export type ClienteUncheckedCreateWithoutAgendamentosInput = {
   id?: number
   nome: string
   telefone?: string | null
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -410,6 +434,7 @@ export type ClienteUpdateToOneWithWhereWithoutAgendamentosInput = {
 export type ClienteUpdateWithoutAgendamentosInput = {
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -418,6 +443,7 @@ export type ClienteUncheckedUpdateWithoutAgendamentosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nome?: Prisma.StringFieldUpdateOperationsInput | string
   telefone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -457,6 +483,7 @@ export type ClienteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   nome?: boolean
   telefone?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
   agendamentos?: boolean | Prisma.Cliente$agendamentosArgs<ExtArgs>
@@ -467,6 +494,7 @@ export type ClienteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   nome?: boolean
   telefone?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }, ExtArgs["result"]["cliente"]>
@@ -475,6 +503,7 @@ export type ClienteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   nome?: boolean
   telefone?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }, ExtArgs["result"]["cliente"]>
@@ -483,11 +512,12 @@ export type ClienteSelectScalar = {
   id?: boolean
   nome?: boolean
   telefone?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }
 
-export type ClienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "telefone" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["cliente"]>
+export type ClienteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "telefone" | "cargo" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["cliente"]>
 export type ClienteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agendamentos?: boolean | Prisma.Cliente$agendamentosArgs<ExtArgs>
   _count?: boolean | Prisma.ClienteCountOutputTypeDefaultArgs<ExtArgs>
@@ -504,6 +534,7 @@ export type $ClientePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     id: number
     nome: string
     telefone: string | null
+    cargo: $Enums.Cargos
     dataCadastro: Date
     dataAtualizacao: Date
   }, ExtArgs["result"]["cliente"]>
@@ -933,6 +964,7 @@ export interface ClienteFieldRefs {
   readonly id: Prisma.FieldRef<"Cliente", 'Int'>
   readonly nome: Prisma.FieldRef<"Cliente", 'String'>
   readonly telefone: Prisma.FieldRef<"Cliente", 'String'>
+  readonly cargo: Prisma.FieldRef<"Cliente", 'Cargos'>
   readonly dataCadastro: Prisma.FieldRef<"Cliente", 'DateTime'>
   readonly dataAtualizacao: Prisma.FieldRef<"Cliente", 'DateTime'>
 }

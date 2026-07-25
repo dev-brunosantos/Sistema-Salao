@@ -78,6 +78,7 @@ export const UsuarioScalarFieldEnum = {
   usuario: 'usuario',
   email: 'email',
   senha: 'senha',
+  cargo: 'cargo',
   dataCadastro: 'dataCadastro',
   dataAtualizacao: 'dataAtualizacao'
 } as const
@@ -89,6 +90,7 @@ export const ClienteScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   telefone: 'telefone',
+  cargo: 'cargo',
   dataCadastro: 'dataCadastro',
   dataAtualizacao: 'dataAtualizacao'
 } as const

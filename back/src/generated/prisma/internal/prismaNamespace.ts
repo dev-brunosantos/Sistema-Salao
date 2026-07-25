@@ -908,6 +908,7 @@ export const UsuarioScalarFieldEnum = {
   usuario: 'usuario',
   email: 'email',
   senha: 'senha',
+  cargo: 'cargo',
   dataCadastro: 'dataCadastro',
   dataAtualizacao: 'dataAtualizacao'
 } as const
@@ -919,6 +920,7 @@ export const ClienteScalarFieldEnum = {
   id: 'id',
   nome: 'nome',
   telefone: 'telefone',
+  cargo: 'cargo',
   dataCadastro: 'dataCadastro',
   dataAtualizacao: 'dataAtualizacao'
 } as const
@@ -1008,6 +1010,13 @@ export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'In
  * Reference to a field of type 'String'
  */
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
+    
+
+
+/**
+ * Reference to a field of type 'Cargos'
+ */
+export type EnumCargosFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Cargos'>
     
 
 

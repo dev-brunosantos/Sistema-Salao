@@ -40,6 +40,7 @@ export type UsuarioMinAggregateOutputType = {
   usuario: string | null
   email: string | null
   senha: string | null
+  cargo: $Enums.Cargos | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -50,6 +51,7 @@ export type UsuarioMaxAggregateOutputType = {
   usuario: string | null
   email: string | null
   senha: string | null
+  cargo: $Enums.Cargos | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -60,6 +62,7 @@ export type UsuarioCountAggregateOutputType = {
   usuario: number
   email: number
   senha: number
+  cargo: number
   dataCadastro: number
   dataAtualizacao: number
   _all: number
@@ -80,6 +83,7 @@ export type UsuarioMinAggregateInputType = {
   usuario?: true
   email?: true
   senha?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -90,6 +94,7 @@ export type UsuarioMaxAggregateInputType = {
   usuario?: true
   email?: true
   senha?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -100,6 +105,7 @@ export type UsuarioCountAggregateInputType = {
   usuario?: true
   email?: true
   senha?: true
+  cargo?: true
   dataCadastro?: true
   dataAtualizacao?: true
   _all?: true
@@ -197,6 +203,7 @@ export type UsuarioGroupByOutputType = {
   usuario: string
   email: string
   senha: string
+  cargo: $Enums.Cargos
   dataCadastro: Date
   dataAtualizacao: Date
   _count: UsuarioCountAggregateOutputType | null
@@ -230,6 +237,7 @@ export type UsuarioWhereInput = {
   usuario?: Prisma.StringFilter<"Usuario"> | string
   email?: Prisma.StringFilter<"Usuario"> | string
   senha?: Prisma.StringFilter<"Usuario"> | string
+  cargo?: Prisma.EnumCargosFilter<"Usuario"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Usuario"> | Date | string
 }
@@ -240,22 +248,24 @@ export type UsuarioOrderByWithRelationInput = {
   usuario?: Prisma.SortOrder
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
 
 export type UsuarioWhereUniqueInput = Prisma.AtLeast<{
   id?: number
+  usuario?: string
   email?: string
   AND?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   OR?: Prisma.UsuarioWhereInput[]
   NOT?: Prisma.UsuarioWhereInput | Prisma.UsuarioWhereInput[]
   nome?: Prisma.StringFilter<"Usuario"> | string
-  usuario?: Prisma.StringFilter<"Usuario"> | string
   senha?: Prisma.StringFilter<"Usuario"> | string
+  cargo?: Prisma.EnumCargosFilter<"Usuario"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFilter<"Usuario"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Usuario"> | Date | string
-}, "id" | "email">
+}, "id" | "usuario" | "email">
 
 export type UsuarioOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -263,6 +273,7 @@ export type UsuarioOrderByWithAggregationInput = {
   usuario?: Prisma.SortOrder
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
   _count?: Prisma.UsuarioCountOrderByAggregateInput
@@ -281,6 +292,7 @@ export type UsuarioScalarWhereWithAggregatesInput = {
   usuario?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   email?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
   senha?: Prisma.StringWithAggregatesFilter<"Usuario"> | string
+  cargo?: Prisma.EnumCargosWithAggregatesFilter<"Usuario"> | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
   dataAtualizacao?: Prisma.DateTimeWithAggregatesFilter<"Usuario"> | Date | string
 }
@@ -290,6 +302,7 @@ export type UsuarioCreateInput = {
   usuario: string
   email: string
   senha: string
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -300,6 +313,7 @@ export type UsuarioUncheckedCreateInput = {
   usuario: string
   email: string
   senha: string
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -309,6 +323,7 @@ export type UsuarioUpdateInput = {
   usuario?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -319,6 +334,7 @@ export type UsuarioUncheckedUpdateInput = {
   usuario?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -329,6 +345,7 @@ export type UsuarioCreateManyInput = {
   usuario: string
   email: string
   senha: string
+  cargo?: $Enums.Cargos
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -338,6 +355,7 @@ export type UsuarioUpdateManyMutationInput = {
   usuario?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -348,6 +366,7 @@ export type UsuarioUncheckedUpdateManyInput = {
   usuario?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   senha?: Prisma.StringFieldUpdateOperationsInput | string
+  cargo?: Prisma.EnumCargosFieldUpdateOperationsInput | $Enums.Cargos
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -358,6 +377,7 @@ export type UsuarioCountOrderByAggregateInput = {
   usuario?: Prisma.SortOrder
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -372,6 +392,7 @@ export type UsuarioMaxOrderByAggregateInput = {
   usuario?: Prisma.SortOrder
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -382,6 +403,7 @@ export type UsuarioMinOrderByAggregateInput = {
   usuario?: Prisma.SortOrder
   email?: Prisma.SortOrder
   senha?: Prisma.SortOrder
+  cargo?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -392,6 +414,10 @@ export type UsuarioSumOrderByAggregateInput = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string
+}
+
+export type EnumCargosFieldUpdateOperationsInput = {
+  set?: $Enums.Cargos
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -414,6 +440,7 @@ export type UsuarioSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   usuario?: boolean
   email?: boolean
   senha?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }, ExtArgs["result"]["usuario"]>
@@ -424,6 +451,7 @@ export type UsuarioSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   usuario?: boolean
   email?: boolean
   senha?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }, ExtArgs["result"]["usuario"]>
@@ -434,6 +462,7 @@ export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   usuario?: boolean
   email?: boolean
   senha?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }, ExtArgs["result"]["usuario"]>
@@ -444,11 +473,12 @@ export type UsuarioSelectScalar = {
   usuario?: boolean
   email?: boolean
   senha?: boolean
+  cargo?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }
 
-export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "usuario" | "email" | "senha" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["usuario"]>
+export type UsuarioOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nome" | "usuario" | "email" | "senha" | "cargo" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["usuario"]>
 
 export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Usuario"
@@ -459,6 +489,7 @@ export type $UsuarioPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
     usuario: string
     email: string
     senha: string
+    cargo: $Enums.Cargos
     dataCadastro: Date
     dataAtualizacao: Date
   }, ExtArgs["result"]["usuario"]>
@@ -889,6 +920,7 @@ export interface UsuarioFieldRefs {
   readonly usuario: Prisma.FieldRef<"Usuario", 'String'>
   readonly email: Prisma.FieldRef<"Usuario", 'String'>
   readonly senha: Prisma.FieldRef<"Usuario", 'String'>
+  readonly cargo: Prisma.FieldRef<"Usuario", 'Cargos'>
   readonly dataCadastro: Prisma.FieldRef<"Usuario", 'DateTime'>
   readonly dataAtualizacao: Prisma.FieldRef<"Usuario", 'DateTime'>
 }

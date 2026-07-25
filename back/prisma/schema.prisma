@@ -41,9 +41,10 @@ enum StatusPagamento {
 model Usuario {
   id Int @id @default(autoincrement())
   nome String
-  usuario String
+  usuario String @unique
   email String @unique
   senha String 
+  cargo Cargos @default(ADMIN)
 
   dataCadastro DateTime @default(now())
   dataAtualizacao DateTime @updatedAt
@@ -53,6 +54,7 @@ model Cliente {
   id Int @id @default(autoincrement())
   nome String 
   telefone String?
+  cargo Cargos @default(CLIENTE)
 
   dataCadastro DateTime @default(now())
   dataAtualizacao DateTime @updatedAt
