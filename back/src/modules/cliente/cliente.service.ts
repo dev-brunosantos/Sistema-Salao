@@ -2,6 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateClienteDto } from './dto/create-cliente.dto';
 import { UpdateClienteDto } from './dto/update-cliente.dto';
 import { ClienteRepository } from './cliente.repository';
+import { Cargos } from 'src/generated/prisma/enums';
 
 @Injectable()
 export class ClienteService {
@@ -11,7 +12,11 @@ export class ClienteService {
   ) { }
 
   async create(createClienteDto: CreateClienteDto) {
-    const novoCliente = await this.clienteRepository.create(createClienteDto)
+    const novoCliente = await this.clienteRepository.create({
+      nome: createClienteDto.nome,
+      telefone: createClienteDto.telefone,
+      cargo: Cargos.CLIENTE
+    })
     return novoCliente;
   }
 

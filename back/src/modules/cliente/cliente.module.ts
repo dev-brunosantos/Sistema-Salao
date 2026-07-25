@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ClienteService } from './cliente.service';
 import { ClienteController } from './cliente.controller';
-import { DbService } from 'src/db/db.service';
 import { ClienteRepository } from './cliente.repository';
+import { DbModule } from 'src/db/db.module';
 
 @Module({
-  imports: [DbService],
+  imports: [DbModule],
   controllers: [ClienteController],
   providers: [
     ClienteService,

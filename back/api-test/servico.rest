@@ -1,0 +1,19 @@
+### Criação do servico
+POST http://localhost:9000/servico
+Content-Type: application/json 
+
+{
+    "nome": "Mão",
+    "descricao": "",
+    "duracao": 30,
+    "preco": 30
+}
+
+### Listar servicos
+GET http://localhost:9000/servico
+
+### Filtra servico por ID
+GET http://localhost:9000/servico/2
+
+### Filtra servico por nome
+GET http://localhost:9000/servico/nome/monica santos
