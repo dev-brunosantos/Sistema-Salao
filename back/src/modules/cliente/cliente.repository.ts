@@ -45,12 +45,8 @@ export class ClienteRepository {
 
     // METODOS COMPLEMENTARES   
     async filtrarClientesPorNome(nome: string) {
-        return this.prisma.cliente.findMany({
-            where: {
-                nome: {
-                    contains: nome
-                }
-            }
+        return this.prisma.cliente.findFirst({
+            where: { nome }
         })
     }
 }

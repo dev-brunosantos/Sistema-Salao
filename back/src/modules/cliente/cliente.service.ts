@@ -61,8 +61,20 @@ export class ClienteService {
 
   // METODOS COMPLEMENTARES
 
-  private async filtrarClientesPorNome(nome: string) {
-    const clientes = await this.clienteRepository.filtrarClientesPorNome(nome);
-    return clientes;
+  private async nomeClienteExistente(nome: string) {
+    const cliente = await this.clienteRepository.filtrarClientesPorNome(nome);
+    return cliente;
+  }
+
+  async filtrarNomeCliente(nome: string) {
+    const cliente = await this.clienteRepository.filtrarClientesPorNome(nome);
+    
+    if (!cliente) {
+      throw new NotFoundException(
+        'O Nome informado não está vinculado a nenhum cliente cadastrado no sistema.'
+      )
+    }
+
+    return cliente;
   }
 }

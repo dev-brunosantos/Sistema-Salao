@@ -71,4 +71,16 @@ export class ServicoService {
   async servicoExistente(nome: string): Promise<boolean> {
     return !!await this.servicoRepository.buscarNomeServico(nome)
   }
+
+  async buscarServicoNome(nome:string) {
+    const servico = await this.servicoRepository.buscarNomeServico(nome);
+
+    if (!servico) {
+      throw new NotFoundException(
+        'O Serviço informado não está cadastrado no sistema.'
+      )
+    }
+
+    return servico
+  }
 }
