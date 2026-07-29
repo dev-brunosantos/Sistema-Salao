@@ -41,6 +41,7 @@ export type AtendimentoMinAggregateOutputType = {
   agendamentoID: number | null
   status: $Enums.StatusAtendimento | null
   statusPagamento: $Enums.StatusPagamento | null
+  descricao: string | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -50,6 +51,7 @@ export type AtendimentoMaxAggregateOutputType = {
   agendamentoID: number | null
   status: $Enums.StatusAtendimento | null
   statusPagamento: $Enums.StatusPagamento | null
+  descricao: string | null
   dataCadastro: Date | null
   dataAtualizacao: Date | null
 }
@@ -59,6 +61,7 @@ export type AtendimentoCountAggregateOutputType = {
   agendamentoID: number
   status: number
   statusPagamento: number
+  descricao: number
   dataCadastro: number
   dataAtualizacao: number
   _all: number
@@ -80,6 +83,7 @@ export type AtendimentoMinAggregateInputType = {
   agendamentoID?: true
   status?: true
   statusPagamento?: true
+  descricao?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -89,6 +93,7 @@ export type AtendimentoMaxAggregateInputType = {
   agendamentoID?: true
   status?: true
   statusPagamento?: true
+  descricao?: true
   dataCadastro?: true
   dataAtualizacao?: true
 }
@@ -98,6 +103,7 @@ export type AtendimentoCountAggregateInputType = {
   agendamentoID?: true
   status?: true
   statusPagamento?: true
+  descricao?: true
   dataCadastro?: true
   dataAtualizacao?: true
   _all?: true
@@ -194,6 +200,7 @@ export type AtendimentoGroupByOutputType = {
   agendamentoID: number
   status: $Enums.StatusAtendimento
   statusPagamento: $Enums.StatusPagamento
+  descricao: string | null
   dataCadastro: Date
   dataAtualizacao: Date
   _count: AtendimentoCountAggregateOutputType | null
@@ -226,6 +233,7 @@ export type AtendimentoWhereInput = {
   agendamentoID?: Prisma.IntFilter<"Atendimento"> | number
   status?: Prisma.EnumStatusAtendimentoFilter<"Atendimento"> | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFilter<"Atendimento"> | $Enums.StatusPagamento
+  descricao?: Prisma.StringNullableFilter<"Atendimento"> | string | null
   dataCadastro?: Prisma.DateTimeFilter<"Atendimento"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Atendimento"> | Date | string
   agendamento?: Prisma.XOR<Prisma.AgendamentoScalarRelationFilter, Prisma.AgendamentoWhereInput>
@@ -237,6 +245,7 @@ export type AtendimentoOrderByWithRelationInput = {
   agendamentoID?: Prisma.SortOrder
   status?: Prisma.SortOrder
   statusPagamento?: Prisma.SortOrder
+  descricao?: Prisma.SortOrderInput | Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
   agendamento?: Prisma.AgendamentoOrderByWithRelationInput
@@ -251,6 +260,7 @@ export type AtendimentoWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.AtendimentoWhereInput | Prisma.AtendimentoWhereInput[]
   status?: Prisma.EnumStatusAtendimentoFilter<"Atendimento"> | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFilter<"Atendimento"> | $Enums.StatusPagamento
+  descricao?: Prisma.StringNullableFilter<"Atendimento"> | string | null
   dataCadastro?: Prisma.DateTimeFilter<"Atendimento"> | Date | string
   dataAtualizacao?: Prisma.DateTimeFilter<"Atendimento"> | Date | string
   agendamento?: Prisma.XOR<Prisma.AgendamentoScalarRelationFilter, Prisma.AgendamentoWhereInput>
@@ -262,6 +272,7 @@ export type AtendimentoOrderByWithAggregationInput = {
   agendamentoID?: Prisma.SortOrder
   status?: Prisma.SortOrder
   statusPagamento?: Prisma.SortOrder
+  descricao?: Prisma.SortOrderInput | Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
   _count?: Prisma.AtendimentoCountOrderByAggregateInput
@@ -279,6 +290,7 @@ export type AtendimentoScalarWhereWithAggregatesInput = {
   agendamentoID?: Prisma.IntWithAggregatesFilter<"Atendimento"> | number
   status?: Prisma.EnumStatusAtendimentoWithAggregatesFilter<"Atendimento"> | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoWithAggregatesFilter<"Atendimento"> | $Enums.StatusPagamento
+  descricao?: Prisma.StringNullableWithAggregatesFilter<"Atendimento"> | string | null
   dataCadastro?: Prisma.DateTimeWithAggregatesFilter<"Atendimento"> | Date | string
   dataAtualizacao?: Prisma.DateTimeWithAggregatesFilter<"Atendimento"> | Date | string
 }
@@ -286,6 +298,7 @@ export type AtendimentoScalarWhereWithAggregatesInput = {
 export type AtendimentoCreateInput = {
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   agendamento: Prisma.AgendamentoCreateNestedOneWithoutAtendimentoInput
@@ -297,6 +310,7 @@ export type AtendimentoUncheckedCreateInput = {
   agendamentoID: number
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   pagamento?: Prisma.PagamentoUncheckedCreateNestedOneWithoutAtendimentoInput
@@ -305,6 +319,7 @@ export type AtendimentoUncheckedCreateInput = {
 export type AtendimentoUpdateInput = {
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agendamento?: Prisma.AgendamentoUpdateOneRequiredWithoutAtendimentoNestedInput
@@ -316,6 +331,7 @@ export type AtendimentoUncheckedUpdateInput = {
   agendamentoID?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamento?: Prisma.PagamentoUncheckedUpdateOneWithoutAtendimentoNestedInput
@@ -326,6 +342,7 @@ export type AtendimentoCreateManyInput = {
   agendamentoID: number
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -333,6 +350,7 @@ export type AtendimentoCreateManyInput = {
 export type AtendimentoUpdateManyMutationInput = {
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -342,6 +360,7 @@ export type AtendimentoUncheckedUpdateManyInput = {
   agendamentoID?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -356,6 +375,7 @@ export type AtendimentoCountOrderByAggregateInput = {
   agendamentoID?: Prisma.SortOrder
   status?: Prisma.SortOrder
   statusPagamento?: Prisma.SortOrder
+  descricao?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -370,6 +390,7 @@ export type AtendimentoMaxOrderByAggregateInput = {
   agendamentoID?: Prisma.SortOrder
   status?: Prisma.SortOrder
   statusPagamento?: Prisma.SortOrder
+  descricao?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -379,6 +400,7 @@ export type AtendimentoMinOrderByAggregateInput = {
   agendamentoID?: Prisma.SortOrder
   status?: Prisma.SortOrder
   statusPagamento?: Prisma.SortOrder
+  descricao?: Prisma.SortOrder
   dataCadastro?: Prisma.SortOrder
   dataAtualizacao?: Prisma.SortOrder
 }
@@ -450,6 +472,7 @@ export type AtendimentoUpdateOneRequiredWithoutPagamentoNestedInput = {
 export type AtendimentoCreateWithoutAgendamentoInput = {
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   pagamento?: Prisma.PagamentoCreateNestedOneWithoutAtendimentoInput
@@ -459,6 +482,7 @@ export type AtendimentoUncheckedCreateWithoutAgendamentoInput = {
   id?: number
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   pagamento?: Prisma.PagamentoUncheckedCreateNestedOneWithoutAtendimentoInput
@@ -483,6 +507,7 @@ export type AtendimentoUpdateToOneWithWhereWithoutAgendamentoInput = {
 export type AtendimentoUpdateWithoutAgendamentoInput = {
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamento?: Prisma.PagamentoUpdateOneWithoutAtendimentoNestedInput
@@ -492,6 +517,7 @@ export type AtendimentoUncheckedUpdateWithoutAgendamentoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   pagamento?: Prisma.PagamentoUncheckedUpdateOneWithoutAtendimentoNestedInput
@@ -500,6 +526,7 @@ export type AtendimentoUncheckedUpdateWithoutAgendamentoInput = {
 export type AtendimentoCreateWithoutPagamentoInput = {
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
   agendamento: Prisma.AgendamentoCreateNestedOneWithoutAtendimentoInput
@@ -510,6 +537,7 @@ export type AtendimentoUncheckedCreateWithoutPagamentoInput = {
   agendamentoID: number
   status?: $Enums.StatusAtendimento
   statusPagamento?: $Enums.StatusPagamento
+  descricao?: string | null
   dataCadastro?: Date | string
   dataAtualizacao?: Date | string
 }
@@ -533,6 +561,7 @@ export type AtendimentoUpdateToOneWithWhereWithoutPagamentoInput = {
 export type AtendimentoUpdateWithoutPagamentoInput = {
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   agendamento?: Prisma.AgendamentoUpdateOneRequiredWithoutAtendimentoNestedInput
@@ -543,6 +572,7 @@ export type AtendimentoUncheckedUpdateWithoutPagamentoInput = {
   agendamentoID?: Prisma.IntFieldUpdateOperationsInput | number
   status?: Prisma.EnumStatusAtendimentoFieldUpdateOperationsInput | $Enums.StatusAtendimento
   statusPagamento?: Prisma.EnumStatusPagamentoFieldUpdateOperationsInput | $Enums.StatusPagamento
+  descricao?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   dataCadastro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   dataAtualizacao?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -554,6 +584,7 @@ export type AtendimentoSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   agendamentoID?: boolean
   status?: boolean
   statusPagamento?: boolean
+  descricao?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
   agendamento?: boolean | Prisma.AgendamentoDefaultArgs<ExtArgs>
@@ -565,6 +596,7 @@ export type AtendimentoSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   agendamentoID?: boolean
   status?: boolean
   statusPagamento?: boolean
+  descricao?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
   agendamento?: boolean | Prisma.AgendamentoDefaultArgs<ExtArgs>
@@ -575,6 +607,7 @@ export type AtendimentoSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   agendamentoID?: boolean
   status?: boolean
   statusPagamento?: boolean
+  descricao?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
   agendamento?: boolean | Prisma.AgendamentoDefaultArgs<ExtArgs>
@@ -585,11 +618,12 @@ export type AtendimentoSelectScalar = {
   agendamentoID?: boolean
   status?: boolean
   statusPagamento?: boolean
+  descricao?: boolean
   dataCadastro?: boolean
   dataAtualizacao?: boolean
 }
 
-export type AtendimentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "agendamentoID" | "status" | "statusPagamento" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["atendimento"]>
+export type AtendimentoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "agendamentoID" | "status" | "statusPagamento" | "descricao" | "dataCadastro" | "dataAtualizacao", ExtArgs["result"]["atendimento"]>
 export type AtendimentoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   agendamento?: boolean | Prisma.AgendamentoDefaultArgs<ExtArgs>
   pagamento?: boolean | Prisma.Atendimento$pagamentoArgs<ExtArgs>
@@ -612,6 +646,7 @@ export type $AtendimentoPayload<ExtArgs extends runtime.Types.Extensions.Interna
     agendamentoID: number
     status: $Enums.StatusAtendimento
     statusPagamento: $Enums.StatusPagamento
+    descricao: string | null
     dataCadastro: Date
     dataAtualizacao: Date
   }, ExtArgs["result"]["atendimento"]>
@@ -1043,6 +1078,7 @@ export interface AtendimentoFieldRefs {
   readonly agendamentoID: Prisma.FieldRef<"Atendimento", 'Int'>
   readonly status: Prisma.FieldRef<"Atendimento", 'StatusAtendimento'>
   readonly statusPagamento: Prisma.FieldRef<"Atendimento", 'StatusPagamento'>
+  readonly descricao: Prisma.FieldRef<"Atendimento", 'String'>
   readonly dataCadastro: Prisma.FieldRef<"Atendimento", 'DateTime'>
   readonly dataAtualizacao: Prisma.FieldRef<"Atendimento", 'DateTime'>
 }

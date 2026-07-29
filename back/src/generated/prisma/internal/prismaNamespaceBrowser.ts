@@ -129,6 +129,7 @@ export const AtendimentoScalarFieldEnum = {
   agendamentoID: 'agendamentoID',
   status: 'status',
   statusPagamento: 'statusPagamento',
+  descricao: 'descricao',
   dataCadastro: 'dataCadastro',
   dataAtualizacao: 'dataAtualizacao'
 } as const

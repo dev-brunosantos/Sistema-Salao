@@ -7,10 +7,16 @@ export class AgendamentoRepository {
 
     constructor(
         private readonly prisma: DbService
-    ) {}
+    ) { }
 
-    async create(data: Prisma.AgendamentoCreateInput): Promise<Agendamento> {
-        return this.prisma.agendamento.create({
+    async create(
+        data: Prisma.AgendamentoCreateInput,
+        tx?: Prisma.TransactionClient,
+    ): Promise<Agendamento> {
+
+        const db = tx ?? this.prisma;
+
+        return db.agendamento.create({
             data
         })
     }

@@ -11,5 +11,6 @@ import { ServicoRepository } from './servico.repository';
     ServicoService,
     ServicoRepository
   ],
+  exports: [ServicoService]
 })
 export class ServicoModule {}

@@ -96,6 +96,7 @@ model Atendimento {
   agendamentoID Int @unique
   status StatusAtendimento @default(PENDENTE)
   statusPagamento StatusPagamento @default(PENDENTE)
+  descricao String?
 
   dataCadastro DateTime @default(now())
   dataAtualizacao DateTime @updatedAt

@@ -5,17 +5,19 @@ import { AgendamentoRepository } from './agendamento.repository';
 import { DbModule } from 'src/db/db.module';
 import { ClienteModule } from '../cliente/cliente.module';
 import { ServicoModule } from '../servico/servico.module';
+import { AtendimentoRepository } from '../atendimento/atendimento.repository';
 
 @Module({
   imports: [
     DbModule,
     ClienteModule,
-    ServicoModule
+    ServicoModule,
   ],
   controllers: [AgendamentoController],
   providers: [
     AgendamentoService, 
-    AgendamentoRepository
+    AgendamentoRepository,
+    AtendimentoRepository
   ],
 })
 export class AgendamentoModule {}

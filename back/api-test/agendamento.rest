@@ -1,0 +1,12 @@
+### Criação de Agendamento 
+POST http://localhost:9000/agendamento
+Content-Type: application/json
+
+{
+    "nomeCliente": "Sandra",
+    "nomeServico": "Mão",
+    "dara": "2026-07-31T00:00:00.000Z"
+}
+
+### Listagem de Agendamentos 
+GET http://localhost:9000/agendamento

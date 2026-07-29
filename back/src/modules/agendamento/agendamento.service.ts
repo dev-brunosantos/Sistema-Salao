@@ -2,17 +2,23 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateAgendamentoDto } from './dto/create-agendamento.dto';
 import { UpdateAgendamentoDto } from './dto/update-agendamento.dto';
 import { AgendamentoRepository } from './agendamento.repository';
+import { DbService } from 'src/db/db.service';
 import { ClienteService } from '../cliente/cliente.service';
 import { ServicoService } from '../servico/servico.service';
-import { StatusAgendamento } from 'src/generated/prisma/enums';
+import { StatusAgendamento, StatusAtendimento, StatusPagamento } from 'src/generated/prisma/enums';
+import { AtendimentoService } from '../atendimento/atendimento.service';
+import { AtendimentoRepository } from '../atendimento/atendimento.repository';
 
 @Injectable()
 export class AgendamentoService {
 
   constructor(
+    private readonly prisma: DbService,
     private readonly agendamentoRepository: AgendamentoRepository,
     private readonly clienteService: ClienteService,
-    private readonly servicoService: ServicoService
+    private readonly servicoService: ServicoService,
+    private readonly atendimentorepository: AtendimentoRepository,
+
   ) { }
 
   async create(createAgendamentoDto: CreateAgendamentoDto) {
@@ -20,26 +26,48 @@ export class AgendamentoService {
     const cliente = await this.clienteService.filtrarNomeCliente(createAgendamentoDto.nomeCliente);
     const servico = await this.servicoService.buscarServicoNome(createAgendamentoDto.nomeServico);
 
-    const novoAgendamento = await this.agendamentoRepository.create({
-      cliente: {
-        connect: {
-          id: cliente.id,
-          nome: cliente.nome
+    const resultado = await this.prisma.$transaction(async (tx) => {
+      const novoAgendamento = await this.agendamentoRepository.create(
+        {
+          cliente: {
+            connect: {
+              id: cliente.id,
+              nome: cliente.nome
+            }
+          },
+          servico: {
+            connect: {
+              id: servico.id,
+              nome: servico.nome
+            }
+          },
+          data: createAgendamentoDto.dara,
+          status: StatusAgendamento.PENDENTE
+        }, tx);
+
+      const novoAtendimento = await this.atendimentorepository.create(
+        {
+          agendamento: {
+            connect: {
+              id: novoAgendamento.id,
+            }
+          },
+          status: StatusAtendimento.PENDENTE,
+          statusPagamento: StatusPagamento.PENDENTE,
+          descricao: 'Atendimento criado com sucesso.',
+        }, tx);
+
+        return {
+          novoAgendamento,
+          novoAtendimento
         }
-      },
-      servico: {
-        connect: {
-          id: servico.id,
-          nome: servico.nome
-        }
-      },
-      data: createAgendamentoDto.dara,
-      status: StatusAgendamento.PENDENTE
+
     })
 
     return {
       msg: 'Agendamento criado com sucesso.',
-      agendamento: novoAgendamento
+      agendamento: resultado.novoAgendamento,
+      atendimento: resultado.novoAtendimento.descricao
     }
   }
 

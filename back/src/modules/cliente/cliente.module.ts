@@ -11,5 +11,6 @@ import { DbModule } from 'src/db/db.module';
     ClienteService,
     ClienteRepository
   ],
+  exports: [ClienteService]
 })
-export class ClienteModule {}
+export class ClienteModule { }
